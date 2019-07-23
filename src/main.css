@@ -2,14 +2,24 @@
     box-sizing: border-box;
 }
 
-.hidden {
-    display: none;
-}
-
 body {
     font-family: 'Lato', sans-serif;
     background-color: rgb(157, 241, 234)
 }
 
+h1 {
+    text-align: center;
+    color: rgb(207, 84, 185);
+    font-size: 3em;
+}
+
+.nav {
+    font-size: 1.2em;
+    padding-left: 2%;
+}
+
+.hidden {
+    display: none;
+}
 /* font-family: 'Lato', sans-serif;
 font-family: 'Open Sans', sans-serif; */

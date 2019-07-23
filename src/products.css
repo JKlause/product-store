@@ -1,8 +1,17 @@
+
+
+h2 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+
 #flavors {
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     font-family: 'Open Sans', sans-serif;
+    justify-content: center;
 }
 
 #flavors li {

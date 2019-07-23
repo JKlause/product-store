@@ -1,7 +1,7 @@
 const applePie = {
     code: 'apple-pie',
     name: 'Apple Pie',
-    image: 'assets/apple-applePie.jpg',
+    image: 'assets/apple-pie.jpg',
     description: 'Delicious Apple Pie Filling with Salted Caramel, Vanilla Ice Cream, and Cinnamon Shortbread Cookies.',
     category: 'cinnamon-cookie',
     price: 6.00,
