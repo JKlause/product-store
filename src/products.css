@@ -1,10 +1,24 @@
-
-
 h2 {
     text-align: center;
     text-decoration: underline;
 }
 
+#cookie-buttons {
+    justify-content: space-evenly;
+    display: flex;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 4em;
+}
+
+#cookie-buttons button:hover {
+    background: rgb(224, 222, 222);
+}
+
+#cookie-buttons button {
+    margin-left: 1em;
+    overflow: hidden;
+}
 
 #flavors {
     padding: 0;
