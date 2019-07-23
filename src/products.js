@@ -13,27 +13,19 @@ renderFlavorList();
 
 
 regCookieButton.addEventListener('click', () => {
-    const regClass = document.querySelectorAll('li.regular-cookie');
-    hideAllFlavors();
-    revealFlavorByClass(regClass);
+    revealFlavorByClass('regular-cookie');
 });
 
 chocCookieButton.addEventListener('click', () => {
-    const chocClass = document.querySelectorAll('li.chocolate-cookie');
-    hideAllFlavors();
-    revealFlavorByClass(chocClass);
+    revealFlavorByClass('chocolate-cooke');
 });
 
 cinCookieButton.addEventListener('click', () => {
-    const cinClass = document.querySelectorAll('li.cinnamon-cookie');
-    hideAllFlavors();
-    revealFlavorByClass(cinClass);
+    revealFlavorByClass('cinnamon-cookie');
 });
 
 grahamCookieButton.addEventListener('click', () => {
-    const grahamClass = document.querySelectorAll('li.graham-cracker-cookie');
-    hideAllFlavors();
-    revealFlavorByClass(grahamClass);
+    revealFlavorByClass('graham-cracker-cookie');
 });
 
 showAllCookieButton.addEventListener('click', () => {
@@ -41,18 +33,21 @@ showAllCookieButton.addEventListener('click', () => {
 });
 
 
-function revealFlavorByClass(flavorClass) {
-    for(let j = 0; j < flavorClass.length; j++) {
-        flavorClass[j].classList.remove('hidden');
-    }
-}
-
 function renderFlavorList() {
     const flavorsList = document.getElementById('flavors');
     for(let i = 0; i < sandwiches.length; i++) {
         const sandwich = sandwiches[i];
         const dom = renderSandwich(sandwich);
         flavorsList.appendChild(dom);
+    }
+}
+
+function revealFlavorByClass(flavorClass) {
+    hideAllFlavors();
+    
+    const singleFlavorList = document.querySelectorAll('li.' + flavorClass);
+    for(let j = 0; j < singleFlavorList.length; j++) {
+        singleFlavorList[j].classList.remove('hidden');
     }
 }
 
