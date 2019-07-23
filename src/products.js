@@ -17,7 +17,7 @@ regCookieButton.addEventListener('click', () => {
 });
 
 chocCookieButton.addEventListener('click', () => {
-    revealFlavorByClass('chocolate-cooke');
+    revealFlavorByClass('chocolate-cookie');
 });
 
 cinCookieButton.addEventListener('click', () => {
@@ -44,7 +44,7 @@ function renderFlavorList() {
 
 function revealFlavorByClass(flavorClass) {
     hideAllFlavors();
-    
+
     const singleFlavorList = document.querySelectorAll('li.' + flavorClass);
     for(let j = 0; j < singleFlavorList.length; j++) {
         singleFlavorList[j].classList.remove('hidden');
