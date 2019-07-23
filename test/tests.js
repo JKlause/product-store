@@ -1,0 +1,1 @@
+import './render-fruit.test.js';
