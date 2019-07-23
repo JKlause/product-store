@@ -35,22 +35,22 @@
     margin-top: 10px;
 }
 
-.price {
+#price {
     font-size: 0.9rem;
+    font-weight: bold;
     position: absolute;
     bottom: 0;
-    left: 0; 
+    left: 0;
     right: 0;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
 }
 
-/* .price button {
-    transition: color 200ms ease-in-out;
+#price button {
+    width: 5em;
+    height: 2em;
 }
-.price button:hover {
-    background: #aaa;
-    color: white;
-} */
+#price button:hover {
+    background: rgb(224, 222, 222);
+}

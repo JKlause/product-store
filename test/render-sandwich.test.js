@@ -1,10 +1,10 @@
-import renderFruit from '../src/render-fruit.js';
+import renderSandwich from '../src/render-sandwich.js';
 
 const test = QUnit.test;
 
-QUnit.module('Render Fruit');
+QUnit.module('Render Sandwich');
 
-test('renders a fruit', assert => {
+test('renders a pie', assert => {
     // arrange
     const apple = {
         code: 'apple',
