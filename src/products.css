@@ -1,0 +1,79 @@
+h2 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+#cookie-buttons {
+    justify-content: space-evenly;
+    display: flex;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 4em;
+}
+
+#cookie-buttons button:hover {
+    background: rgb(224, 222, 222);
+}
+
+#cookie-buttons button {
+    margin-left: 1em;
+    overflow: hidden;
+}
+
+#flavors {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Open Sans', sans-serif;
+    justify-content: center;
+}
+
+#flavors li {
+    list-style: none;
+    position: relative;
+    background: rgb(247, 236, 245);
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    width: 300px;
+    height: 250px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    box-shadow: 1px 1px 2px #ccc;
+    transition: transform 200ms ease-in-out;
+}
+
+#flavors li:hover {
+    box-shadow: 2px 2px 3px #bbb;
+    transform: translate3d(-1px, -1px, 0);
+}
+
+#flavors li h3 {
+    font-size: 1.1rem;
+    margin: 5px;
+}
+
+#flavors li img {
+    width: 80%;
+    margin-top: 10px;
+}
+
+#price {
+    font-size: 0.9rem;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#price button {
+    width: 5em;
+    height: 2em;
+}
+#price button:hover {
+    background: rgb(224, 222, 222);
+}
