@@ -3,6 +3,7 @@ import { findProduct, calcOrderTotal } from './register.js';
 import renderLineItem from './render-line-items.js';
 import order from './data/order.js';
 import promoCodes from './data/promo.js';
+import { toUSD } from './format-dollar.js';
 
 const orderTotalCell = document.getElementById('order-total-cell');
 const shoppingCartList = document.getElementById('shopping-cart-body');
@@ -18,7 +19,6 @@ promoCodeButton.addEventListener('click', () => {
     validateAndApplyPromoDiscount();
 });
 
-
 function renderShoppingCartItems() {
     for(let i = 0; i < order.length; i++) {
         const customerOrderItem = order[i];
@@ -29,7 +29,7 @@ function renderShoppingCartItems() {
 }
 
 function renderOrderTotal(discount) {
-    orderTotalCell.textContent = calcOrderTotal(order, sandwiches, discount).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    orderTotalCell.textContent = toUSD(calcOrderTotal(order, sandwiches, discount));
 }
 
 function validateAndApplyPromoDiscount() {
