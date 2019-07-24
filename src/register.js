@@ -1,3 +1,5 @@
+import { toUSD } from './format-dollar.js';
+
 export function findProduct(sandwiches, code) {
     //loop through array
     for(let i = 0; i < sandwiches.length; i++) {
@@ -24,5 +26,9 @@ export function calcOrderTotal(cart, sandwiches) {
         const lineTotal = getLineTotal(quantity, sandwichPrice);
         orderTotal += +lineTotal;
     }
+    orderTotal = toUSD(orderTotal);
     return orderTotal;
 }
+
+
+

@@ -8,14 +8,14 @@ QUnit.module('Render Line Item');
 
 test('renders a line item', assert => {
     // arrange
-    const lineItem = {
+    const customerOrderItem = {
         code: 'key-lime-pie',
         quantity: 3
     };
-    const sandwich = findProduct(sandwiches, lineItem.code);
+    const sandwich = findProduct(sandwiches, customerOrderItem.code);
     const expected = '<tr><td class="left-align">Key Lime Pie</td><td>3</td><td>$7.50</td><td>$22.50</td></tr>';
     // act
-    const dom = renderLineItem(lineItem, sandwich);
+    const dom = renderLineItem(customerOrderItem, sandwich);
     const html = dom.outerHTML;
     
     // assert

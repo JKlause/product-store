@@ -30,34 +30,15 @@
                 </tr>
             </thead>
 
-            <tbody>
-                <tr>
-                    <td class="left-align">Key Lime Pie</td>
-                    <td>3</td>
-                    <td>$7.50</td>
-                    <td>$22.50</td>
-                </tr>
-                <tr>
-                    <td class="left-align">Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                </tr>
-                <tr>
-                    <td class="left-align">Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                </tr>
-                <tr>
-                    <td class="left-align">Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                    <td>Data</td>
-                </tr>
-            </tbody>
+            <tbody id='shopping-cart-body'></tbody>
 
             <tfoot>
+                <tr class="hidden">
+                    <th></th>
+                    <th></th>
+                    <th>Discount Applied</th>
+                    <th id="discount=cell"></th>
+                </tr>
                 <tr>
                     <th class="left-align"></th>
                     <th></th>
@@ -66,10 +47,14 @@
                 </tr>
             </tfoot>
         </table>
+        <p class= "promo-code-area">
+            Enter Promo Code Here:<input id="promo-code-input-box" type="text"></input>
+            <button id="promo-code-button">Confirm Promo Code</button>
+        </p>
         <p class="order-now-container">
-            <button>Place Order</button>
+            <button id="place-order-button">Place Order</button>
         </p>
     </main>
-    
+    <script src="./src/shopping-cart.js" type="module"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 import { getLineTotal } from './register.js';
 import { toUSD } from './format-dollar.js';
 
-function renderLineItem(lineItem, sandwich) {
+function renderLineItem(customerOrderItem, sandwich) {
     const tr = document.createElement('tr');
 
     const nameCell = document.createElement('td');
@@ -10,7 +10,7 @@ function renderLineItem(lineItem, sandwich) {
     tr.appendChild(nameCell);
 
     const quantityCell = document.createElement('td');
-    quantityCell.textContent = lineItem.quantity;
+    quantityCell.textContent = customerOrderItem.quantity;
     tr.appendChild(quantityCell);
 
     const priceCell = document.createElement('td');
@@ -18,7 +18,7 @@ function renderLineItem(lineItem, sandwich) {
     tr.appendChild(priceCell);
 
     const lineTotalCell = document.createElement('td');
-    lineTotalCell.textContent = toUSD(getLineTotal(lineItem.quantity, sandwich.price));
+    lineTotalCell.textContent = toUSD(getLineTotal(customerOrderItem.quantity, sandwich.price));
     tr.appendChild(lineTotalCell);
 
     return tr;
