@@ -43,3 +43,13 @@ test('calculate order total', assert => {
     //assert
     assert.equal(lineTotal, expected);
 });
+
+test('calculate order total with discount', assert => {
+    //arrange
+    const discount = .1
+    const expected = '$73.80';
+    //act
+    const lineTotal = calcOrderTotal(cart, sandwiches, discount);
+    //assert
+    assert.equal(lineTotal, expected);
+});

@@ -16,8 +16,7 @@ export function getLineTotal(quantity, price) {
     return (quantity * price);
 }
 
-export function calcOrderTotal(cart, sandwiches) {
-
+export function calcOrderTotal(cart, sandwiches, discount) {
     let orderTotal = 0;
 
     for(let i = 0; i < cart.length; i++) {
@@ -25,6 +24,9 @@ export function calcOrderTotal(cart, sandwiches) {
         const quantity = cart[i].quantity;
         const lineTotal = getLineTotal(quantity, sandwichPrice);
         orderTotal += +lineTotal;
+    }
+    if(discount) {
+        orderTotal = orderTotal - (orderTotal * discount);
     }
     orderTotal = toUSD(orderTotal);
     return orderTotal;
