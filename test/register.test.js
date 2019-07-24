@@ -46,7 +46,7 @@ test('calculate order total', assert => {
 
 test('calculate order total with discount', assert => {
     //arrange
-    const discount = .1
+    const discount = .1;
     const expected = '$73.80';
     //act
     const lineTotal = calcOrderTotal(cart, sandwiches, discount);
