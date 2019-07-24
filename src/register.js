@@ -1,5 +1,3 @@
-import { toUSD } from './format-dollar.js';
-
 export function findProduct(sandwiches, code) {
     //loop through array
     for(let i = 0; i < sandwiches.length; i++) {
@@ -16,19 +14,18 @@ export function getLineTotal(quantity, price) {
     return (quantity * price);
 }
 
-export function calcOrderTotal(cart, sandwiches, discount) {
+export function calcOrderTotal(order, sandwiches, discount) {
     let orderTotal = 0;
 
-    for(let i = 0; i < cart.length; i++) {
-        const sandwichPrice = (findProduct(sandwiches, cart[i].code)).price;
-        const quantity = cart[i].quantity;
+    for(let i = 0; i < order.length; i++) {
+        const sandwichPrice = findProduct(sandwiches, order[i].code).price;
+        const quantity = order[i].quantity;
         const lineTotal = getLineTotal(quantity, sandwichPrice);
         orderTotal += +lineTotal;
     }
     if(discount) {
         orderTotal = orderTotal - (orderTotal * discount);
     }
-    orderTotal = toUSD(orderTotal);
     return orderTotal;
 }
 

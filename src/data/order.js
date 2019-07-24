@@ -1,4 +1,4 @@
-const cart = [{
+const order = [{
     code: 'apple-pie',
     quantity: 2,
 }, {
@@ -12,4 +12,4 @@ const cart = [{
     quantity: 5,
 }];
 
-export default cart;
+export default order;

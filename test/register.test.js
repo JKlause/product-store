@@ -1,5 +1,5 @@
 import sandwiches from '../src/data/sandwiches.js';
-import cart from '../src/data/order.js';
+import order from '../src/data/order.js';
 import { findProduct, getLineTotal, calcOrderTotal } from '../src/register.js';
 
 const test = QUnit.test;
@@ -37,9 +37,9 @@ test('get line total', assert => {
 
 test('calculate order total', assert => {
     //arrange
-    const expected = '$82.00';
+    const expected = '82.00';
     //act
-    const lineTotal = calcOrderTotal(cart, sandwiches);
+    const lineTotal = calcOrderTotal(order, sandwiches);
     //assert
     assert.equal(lineTotal, expected);
 });
@@ -47,9 +47,9 @@ test('calculate order total', assert => {
 test('calculate order total with discount', assert => {
     //arrange
     const discount = .1;
-    const expected = '$73.80';
+    const expected = '73.80';
     //act
-    const lineTotal = calcOrderTotal(cart, sandwiches, discount);
+    const lineTotal = calcOrderTotal(order, sandwiches, discount);
     //assert
     assert.equal(lineTotal, expected);
 });

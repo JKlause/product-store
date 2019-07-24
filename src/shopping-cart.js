@@ -1,7 +1,7 @@
 import sandwiches from './data/sandwiches.js';
 import { findProduct, calcOrderTotal } from './register.js';
 import renderLineItem from './render-line-items.js';
-import cart from './data/order.js';
+import order from './data/order.js';
 import promoCodes from './data/promo.js';
 
 const orderTotalCell = document.getElementById('order-total-cell');
@@ -20,8 +20,8 @@ promoCodeButton.addEventListener('click', () => {
 
 
 function renderShoppingCartItems() {
-    for(let i = 0; i < cart.length; i++) {
-        const customerOrderItem = cart[i];
+    for(let i = 0; i < order.length; i++) {
+        const customerOrderItem = order[i];
         const sandwich = findProduct(sandwiches, customerOrderItem.code);
         const dom = renderLineItem(customerOrderItem, sandwich);
         shoppingCartList.appendChild(dom);
@@ -29,7 +29,7 @@ function renderShoppingCartItems() {
 }
 
 function renderOrderTotal(discount) {
-    orderTotalCell.textContent = calcOrderTotal(cart, sandwiches, discount);
+    orderTotalCell.textContent = calcOrderTotal(order, sandwiches, discount).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 }
 
 function validateAndApplyPromoDiscount() {
