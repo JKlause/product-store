@@ -71,3 +71,6 @@ function updateShoppingCart() {
     } 
     renderShoppingCartItems();
 }
+
+//put in shopping cart icon
+//remove individual product from list

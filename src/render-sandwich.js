@@ -28,6 +28,7 @@ function renderSandwich(sandwich) {
     button.textContent = 'Add';
     button.addEventListener('click', () => {
         store.orderProduct(sandwich.code);
+        alert(`You added a ${sandwich.name} to your cart.`);
     });
     p.appendChild(button);
 

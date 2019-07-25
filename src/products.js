@@ -64,4 +64,5 @@ function revealAllFlavors() {
     }
 }
 
-//add quantity amount
+//add quantity amount input
+//add alert, added to cart
