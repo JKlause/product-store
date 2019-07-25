@@ -1,8 +1,7 @@
 import sandwiches from './data/sandwiches.js';
 import { calcOrderTotal } from './register.js';
 import store from './data/store.js';
-import renderLineItem from './render-line-items.js';
-import order from './data/order.js';
+import renderLineItem, { renderNoLineItem } from './render-line-items.js';
 import promoCodes from './data/promo.js';
 import { toUSD } from './format-dollar.js';
 
@@ -12,6 +11,7 @@ const promoCodeButton = document.getElementById('promo-code-button');
 const customerPromoCode = document.getElementById('promo-code-input-box');
 const discountRow = document.getElementById('discount-row');
 const discountCell = document.getElementById('discount-cell');
+const shoppingCart = store.getShoppingCart();
 
 renderShoppingCartItems();
 renderOrderTotal();
@@ -21,16 +21,22 @@ promoCodeButton.addEventListener('click', () => {
 });
 
 function renderShoppingCartItems() {
-    for(let i = 0; i < order.length; i++) {
-        const customerOrderItem = order[i];
+    console.log(shoppingCart.length);
+    if(shoppingCart.length === 0) {
+        const noItemsDom = renderNoLineItem();
+        shoppingCartList.appendChild(noItemsDom);
+    }
+    for(let i = 0; i < shoppingCart.length; i++) {
+        const customerOrderItem = shoppingCart[i];
         const sandwich = store.getProduct(customerOrderItem.code);
         const dom = renderLineItem(customerOrderItem, sandwich);
         shoppingCartList.appendChild(dom);
+
     }
 }
 
 function renderOrderTotal(discount) {
-    orderTotalCell.textContent = toUSD(calcOrderTotal(order, sandwiches, discount));
+    orderTotalCell.textContent = toUSD(calcOrderTotal(shoppingCart, sandwiches, discount));
 }
 
 function validateAndApplyPromoDiscount() {
@@ -48,5 +54,3 @@ function validateAndApplyPromoDiscount() {
         alert('Invalid Promo Code');
     }
 }
-
-//if nothing in cart?

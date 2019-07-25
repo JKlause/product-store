@@ -26,3 +26,15 @@ function renderLineItem(customerOrderItem, sandwich) {
 
 
 export default renderLineItem;
+
+export function renderNoLineItem() {
+    const tr = document.createElement('tr');
+
+    const noItemCell = document.createElement('td');
+    noItemCell.className = 'center-align';
+    noItemCell.colSpan = '4';
+    noItemCell.textContent = 'There Aren\'t Any Products In Your Shopping Cart';
+    tr.appendChild(noItemCell);
+    
+    return tr;
+}

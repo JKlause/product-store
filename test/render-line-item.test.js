@@ -1,6 +1,7 @@
 import sandwiches from '../src/data/sandwiches.js';
 import { findProduct } from '../src/register.js';
 import renderLineItem from '../src/render-line-items.js';
+import { renderNoLineItem } from '../src/render-line-items.js';
 
 const test = QUnit.test;
 
@@ -19,5 +20,13 @@ test('renders a line item', assert => {
     const html = dom.outerHTML;
     
     // assert
+    assert.equal(html, expected);
+});
+
+test('render no line item', assert => {
+    const expected = '<tr><td class="center-align" colspan="4">There Aren\'t Any Products In Your Shopping Cart</td></tr>';
+
+    const dom = renderNoLineItem();
+    const html = dom.outerHTML;
     assert.equal(html, expected);
 });

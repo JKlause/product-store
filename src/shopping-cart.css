@@ -32,6 +32,13 @@ tbody tr:nth-child(even) {
     text-align: left;
 }
 
+.center-align {
+    text-align: center;
+}
+
+.right-align{
+    text-align: right;
+}
 table, .order-now-container {
     width: 100%;
     max-width: 600px;
