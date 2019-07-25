@@ -1,5 +1,6 @@
 import sandwiches from './data/sandwiches.js';
-import { findProduct, calcOrderTotal } from './register.js';
+import { calcOrderTotal } from './register.js';
+import store from './data/store.js';
 import renderLineItem from './render-line-items.js';
 import order from './data/order.js';
 import promoCodes from './data/promo.js';
@@ -22,7 +23,7 @@ promoCodeButton.addEventListener('click', () => {
 function renderShoppingCartItems() {
     for(let i = 0; i < order.length; i++) {
         const customerOrderItem = order[i];
-        const sandwich = findProduct(sandwiches, customerOrderItem.code);
+        const sandwich = store.getProduct(customerOrderItem.code);
         const dom = renderLineItem(customerOrderItem, sandwich);
         shoppingCartList.appendChild(dom);
     }
@@ -47,3 +48,5 @@ function validateAndApplyPromoDiscount() {
         alert('Invalid Promo Code');
     }
 }
+
+//if nothing in cart?

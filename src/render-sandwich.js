@@ -1,4 +1,5 @@
 export default renderSandwich;
+import store from './data/store.js';
 
 function renderSandwich(sandwich) {
     const li = document.createElement('li');
@@ -25,6 +26,9 @@ function renderSandwich(sandwich) {
     button.type = 'button';
     button.value = sandwich.code;
     button.textContent = 'Add';
+    button.addEventListener('click', () => {
+        store.orderProduct(sandwich.code);
+    });
     p.appendChild(button);
 
     li.appendChild(p);
