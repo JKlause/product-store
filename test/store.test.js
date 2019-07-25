@@ -1,7 +1,7 @@
 import store from '../src/data/store.js';
 import sandwiches from '../src/data/sandwiches.js';
 
-const storage = window.sessionStorage;
+store.storage = window.sessionStorage;
 
 const test = QUnit.test;
 

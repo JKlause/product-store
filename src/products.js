@@ -1,5 +1,4 @@
 import renderSandwich from '../src/render-sandwich.js';
-import sandwiches from '../src/data/sandwiches.js';
 import store from './data/store.js';
 
 const regCookieButton = document.getElementById('reg-button');
