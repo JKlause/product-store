@@ -63,5 +63,3 @@ function revealAllFlavors() {
         listedSandwiches[i].classList.remove('hidden');
     }
 }
-
-//add quantity amount
