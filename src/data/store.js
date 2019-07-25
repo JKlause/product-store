@@ -59,7 +59,14 @@ const store = {
             } 
         }
         store.save('shopping-cart', shoppingCart);
-    }
+    },
+    remove(code) {
+        let shoppingCart = store.getShoppingCart();
+        const indexOfProduct = shoppingCart.findIndex(i => i.code === code);
+        shoppingCart.splice(indexOfProduct, 1);
+        store.save('shopping-cart', shoppingCart);
+        return shoppingCart;
+    },
 };
 
 

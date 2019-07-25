@@ -36,9 +36,6 @@ tbody tr:nth-child(even) {
     text-align: center;
 }
 
-.right-align{
-    text-align: right;
-}
 table, .order-now-container {
     width: 100%;
     max-width: 600px;
@@ -66,4 +63,8 @@ table, .order-now-container {
 
 #promo-code-button {
     margin-left: 10%;
+}
+
+#clear-shopping-cart-button {
+    margin-left: 5%;
 }

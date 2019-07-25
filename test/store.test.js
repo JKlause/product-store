@@ -87,3 +87,19 @@ test('Order Product to not Empty Cart', assert => {
     // assert
     assert.deepEqual(shoppingCart, expected);
 });
+
+test('remove product', assert => {
+    // arrange
+    const expected = [{ 
+        code: 'key-lime-pie',
+        quantity: 7
+    }];
+    // act
+    store.orderProduct('apple-pie');
+    store.orderProduct('key-lime-pie', 7);
+    store.remove('apple-pie');
+    const shoppingCart = store.getShoppingCart();
+    
+    // assert
+    assert.deepEqual(shoppingCart, expected);
+});
