@@ -46,14 +46,39 @@ test('Get shopping cart', assert => {
 
 test('Order Product to Empty Cart', assert => {
     // arrange
-    const expected = { 
+    const expected = [{ 
         code: 'key-lime-pie',
         quantity: 1 
-    };
+    }];
     // act
     store.orderProduct('key-lime-pie');
     const shoppingCart = store.getShoppingCart();
 
     // assert
     assert.deepEqual(shoppingCart, expected);
+});
+
+test('Order Product to not Empty Cart', assert => {
+    // arrange
+    const expected = [{ 
+        code: 'key-lime-pie',
+        quantity: 8 
+    }];
+    // act
+    store.orderProduct('key-lime-pie');
+    store.orderProduct('key-lime-pie', 7);
+    const shoppingCart = store.getShoppingCart();
+
+    // assert
+    assert.deepEqual(shoppingCart, expected);
+});
+
+test('get product by code', assert => {
+    // arrange
+    const code = 'apple-pie';
+    const expected = sandwiches[7];
+    // act
+    const product = store.getProduct(code);
+    // assert
+    assert.deepEqual(product, expected);
 });
