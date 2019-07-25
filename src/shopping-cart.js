@@ -47,3 +47,5 @@ function validateAndApplyPromoDiscount() {
         alert('Invalid Promo Code');
     }
 }
+
+//if nothing in cart?

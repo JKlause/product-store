@@ -36,14 +36,27 @@ const store = {
     orderProduct(code, quantity) {
         const shoppingCart = store.getShoppingCart();
         const lineItem = findProduct(shoppingCart, code);
-        if(lineItem) {
-            lineItem.quantity = lineItem.quantity + quantity;
-        } else {
-            const lineItem = {
-                code: code,
-                quantity: 1,
-            };
-            shoppingCart.push(lineItem);
+        if(quantity) {
+            if(lineItem) {
+                lineItem.quantity = lineItem.quantity + quantity;
+            } else {
+                const lineItem = {
+                    code: code,
+                    quantity: quantity,
+                };
+                shoppingCart.push(lineItem);
+            } 
+        }
+        else {
+            if(lineItem) {
+                lineItem.quantity++;
+            } else {
+                const lineItem = {
+                    code: code,
+                    quantity: 1,
+                };
+                shoppingCart.push(lineItem);
+            } 
         }
         store.save('shopping-cart', shoppingCart);
     }
