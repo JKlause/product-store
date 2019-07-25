@@ -12,13 +12,24 @@ const clearCartButton = document.getElementById('clear-shopping-cart-button');
 const customerPromoCode = document.getElementById('promo-code-input-box');
 const discountRow = document.getElementById('discount-row');
 const discountCell = document.getElementById('discount-cell');
-const shoppingCart = store.getShoppingCart();
+let shoppingCart = store.getShoppingCart();
 
 renderShoppingCartItems();
 renderOrderTotal();
 
 promoCodeButton.addEventListener('click', () => {
     validateAndApplyPromoDiscount();
+});
+
+clearCartButton.addEventListener('click', () => {
+    const confirmClearCart = confirm('Are you sure you want to clear your shopping cart?');
+    if(confirmClearCart) {
+        for(let i = 0; i < shoppingCart.length; i++) {
+            store.remove(shoppingCart[i].code);
+            shoppingCart = [];
+        } 
+        updateShoppingCart();
+    }
 });
 
 function renderShoppingCartItems() {
@@ -54,34 +65,9 @@ function validateAndApplyPromoDiscount() {
     }
 }
 
-clearCartButton.addEventListener('click', () => {
-    const confirmClearCart = confirm('Are you sure you want to clear your shopping cart?');
-    if(confirmClearCart) {
-        for(let i = 0; i < shoppingCart.length; i++) {
-            store.remove(shoppingCart[i].code);
-            while(shoppingCartList.firstChild) {
-                shoppingCartList.removeChild(shoppingCartList.firstChild);
-            }
-        }
-        return;
-    } 
-    renderShoppingCartItems();
-});
-//get clear shopping cart button
-//add event listener
-    //confirm clear shopping part
-        //if no return
-        //if yes remove all products from shopping cart
-            //get shopping cart
-            //remove all items
-            //save shopping cart
-
-//updateShoppingCart fn
 function updateShoppingCart() {
     while(shoppingCartList.firstChild) {
         shoppingCartList.removeChild(shoppingCartList.firstChild);
-    }
+    } 
     renderShoppingCartItems();
 }
-    //remove all children of shoppingCartList that are 'tr'
-    //call renderShoppingCartItems
