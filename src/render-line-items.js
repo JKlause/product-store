@@ -69,8 +69,7 @@ export function renderLineItemWithRemove(customerOrderItem, sandwich) {
         const confirmRemoveSandwich = confirm('Are you sure you want to remove this item from your shopping cart?');
         if(confirmRemoveSandwich) {
             store.remove(sandwich.code);
-            window.location.reload();
-        } 
+        }
     });
     removeButtonCell.appendChild(removeButton);
     tr.appendChild(removeButtonCell);

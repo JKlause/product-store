@@ -28,13 +28,6 @@ tbody tr:nth-child(even) {
     background: rgb(233, 206, 238);
 }
 
-.left-align {
-    text-align: left;
-}
-
-.center-align {
-    text-align: center;
-}
 
 table, .order-now-container {
     width: 100%;
