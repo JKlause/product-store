@@ -64,8 +64,9 @@ const store = {
         let shoppingCart = store.getShoppingCart();
         const indexOfProduct = shoppingCart.findIndex(i => i.code === code);
         shoppingCart.splice(indexOfProduct, 1);
-        //am I missing a push?
         store.save('shopping-cart', shoppingCart);
+        // window.location.reload();  //this line making my page strobe
+        shoppingCart = store.getShoppingCart();
         return shoppingCart;
     },
 };

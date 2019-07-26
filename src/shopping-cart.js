@@ -12,9 +12,9 @@ const clearCartButton = document.getElementById('clear-shopping-cart-button');
 const customerPromoCode = document.getElementById('promo-code-input-box');
 const discountRow = document.getElementById('discount-row');
 const discountCell = document.getElementById('discount-cell');
-let shoppingCart = store.getShoppingCart();
+const shoppingCart = store.getShoppingCart();
 
-renderShoppingCartItems();
+renderShoppingCartItems(shoppingCart);
 renderOrderTotal();
 
 promoCodeButton.addEventListener('click', () => {
@@ -26,13 +26,11 @@ clearCartButton.addEventListener('click', () => {
     if(confirmClearCart) {
         for(let i = 0; i < shoppingCart.length; i++) {
             store.remove(shoppingCart[i].code);
-            shoppingCart = [];
         } 
-        clearShoppingCart();
     }
 });
 
-export function renderShoppingCartItems() {
+export function renderShoppingCartItems(shoppingCart) {
     if(shoppingCart.length === 0) {
         const noItemsDom = renderNoLineItem();
         shoppingCartList.appendChild(noItemsDom);
@@ -65,12 +63,6 @@ function validateAndApplyPromoDiscount() {
     }
 }
 
-function clearShoppingCart() {
-    while(shoppingCartList.firstChild) {
-        shoppingCartList.removeChild(shoppingCartList.firstChild);
-    } 
-    renderShoppingCartItems();
-}
 
 //put in shopping cart icon (weekend project)
 //build homepage, update css (5 hours)

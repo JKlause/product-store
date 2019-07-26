@@ -2,6 +2,7 @@ import { getLineTotal } from './register.js';
 import { toUSD } from './format-dollar.js';
 import store from './data/store.js';
 
+
 function renderLineItem(customerOrderItem, sandwich) {
     const tr = document.createElement('tr');
 
@@ -67,17 +68,12 @@ export function renderLineItemWithRemove(customerOrderItem, sandwich) {
     removeButton.addEventListener('click', () => {
         const confirmRemoveSandwich = confirm('Are you sure you want to remove this item from your shopping cart?');
         if(confirmRemoveSandwich) {
-            let shoppingCart = store.getShoppingCart();
-            console.log(shoppingCart);
             store.remove(sandwich.code);
-            shoppingCart = store.getShoppingCart();
-            console.log(shoppingCart);
+            window.location.reload();
         } 
     });
     removeButtonCell.appendChild(removeButton);
     tr.appendChild(removeButtonCell);
 
     return tr;
-
 }
-// is my remove not working?
