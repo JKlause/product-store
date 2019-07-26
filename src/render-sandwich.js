@@ -19,7 +19,7 @@ function renderSandwich(sandwich) {
     p.id = 'price';
 
     const select = document.createElement('select');
-    select.id = 'quantity';
+    select.id = `quantity`;
     select.required = true;
     select.name = 'order-quantity';
 
@@ -111,8 +111,15 @@ function renderSandwich(sandwich) {
     button.value = sandwich.code;
     button.textContent = 'Add';
     button.addEventListener('click', () => {
-        store.orderProduct(sandwich.code);
-        alert(`You added a ${sandwich.name} to your cart.`);
+        const sandwichOrderedQuantity = select.value;
+        if(sandwichOrderedQuantity === 'Choose Quantity') {
+            alert('Please select the number of ice cream sandwiches you would like to order from the drop down menu.');
+        } else if(sandwichOrderedQuantity === '0') {
+            alert('Please choose an amount other than zero!');
+        } else {
+            store.orderProduct(sandwich.code, sandwichOrderedQuantity);
+            alert(`You added ${sandwichOrderedQuantity} of the ${sandwich.name} ice cream sandwich to your cart.`);
+        }
     });
     p.appendChild(button);
 

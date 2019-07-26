@@ -63,8 +63,3 @@ function revealAllFlavors() {
         listedSandwiches[i].classList.remove('hidden');
     }
 }
-
-
-//change alert to include quantity input
-//wire quantity input to add button
-//get quantity input to sync to quantity of order
