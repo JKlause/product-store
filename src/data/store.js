@@ -38,7 +38,7 @@ const store = {
         const lineItem = findProduct(shoppingCart, code);
         if(quantity) {
             if(lineItem) {
-                lineItem.quantity = lineItem.quantity + quantity;
+                lineItem.quantity = +lineItem.quantity + +quantity;
             } else {
                 const lineItem = {
                     code: code,
@@ -64,6 +64,7 @@ const store = {
         let shoppingCart = store.getShoppingCart();
         const indexOfProduct = shoppingCart.findIndex(i => i.code === code);
         shoppingCart.splice(indexOfProduct, 1);
+        //am I missing a push?
         store.save('shopping-cart', shoppingCart);
         return shoppingCart;
     },

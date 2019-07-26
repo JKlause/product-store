@@ -1,7 +1,7 @@
 import sandwiches from './data/sandwiches.js';
 import { calcOrderTotal } from './register.js';
 import store from './data/store.js';
-import renderLineItem, { renderNoLineItem } from './render-line-items.js';
+import { renderNoLineItem, renderLineItemWithRemove } from './render-line-items.js';
 import promoCodes from './data/promo.js';
 import { toUSD } from './format-dollar.js';
 
@@ -28,11 +28,11 @@ clearCartButton.addEventListener('click', () => {
             store.remove(shoppingCart[i].code);
             shoppingCart = [];
         } 
-        updateShoppingCart();
+        clearShoppingCart();
     }
 });
 
-function renderShoppingCartItems() {
+export function renderShoppingCartItems() {
     if(shoppingCart.length === 0) {
         const noItemsDom = renderNoLineItem();
         shoppingCartList.appendChild(noItemsDom);
@@ -40,7 +40,7 @@ function renderShoppingCartItems() {
     for(let i = 0; i < shoppingCart.length; i++) {
         const customerOrderItem = shoppingCart[i];
         const sandwich = store.getProduct(customerOrderItem.code);
-        const dom = renderLineItem(customerOrderItem, sandwich);
+        const dom = renderLineItemWithRemove(customerOrderItem, sandwich);
         shoppingCartList.appendChild(dom);
     }
 }
@@ -65,12 +65,14 @@ function validateAndApplyPromoDiscount() {
     }
 }
 
-function updateShoppingCart() {
+function clearShoppingCart() {
     while(shoppingCartList.firstChild) {
         shoppingCartList.removeChild(shoppingCartList.firstChild);
     } 
     renderShoppingCartItems();
 }
 
-//put in shopping cart icon
-//remove individual product from list
+//put in shopping cart icon (weekend project)
+//build homepage, update css (5 hours)
+
+//my remove function doesn't seem to be working
