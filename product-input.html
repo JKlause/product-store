@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add A Product</title>
     <link rel="stylesheet" href="src/main.css">
-    <link rel="stylesheet" href="src/product-entry.css">
+    <link rel="stylesheet" href="src/product-input.css">
 </head>
 <body>
     <header>
@@ -32,10 +32,6 @@
                 <input id="name" required name="name" type="text">
             </p>
             <p>
-                <label for="image">Image:</label>
-                <input id="image" required name="image" type="file">
-            </p>
-            <p>
                 <label for="description">Description:</label>
                 <textarea id="description" required name="description"></textarea>
             </p>
@@ -50,14 +46,14 @@
             </p>
             <p>
                 <label for="cost">Cost:</label>
-                <input id="cost" required name="price" type="number" step=".01">
+                <input id="cost" required name="cost" type="number" step=".01">
             </p>
             <p>
-                <button id="add-button">Add Sandwich</button>
+                <button>Add Sandwich</button>
             </p>
         </form>
 
     </main>
-    
+    <script src="./src/product-input.js" type="module"></script>
 </body>
 </html>

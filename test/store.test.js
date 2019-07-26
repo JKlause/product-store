@@ -103,3 +103,22 @@ test('remove product', assert => {
     // assert
     assert.deepEqual(shoppingCart, expected);
 });
+
+test('add product to local storage products', assert => {
+    // arrange
+    const product = {
+        code: 'red-eye',
+        name: 'Red Eye',
+        image: 'assets/red-eye.jpg',
+        description: 'Creamy Espresso Mousse, Coffee Ice Cream, and Chocolate Shortbread Cookies.',
+        category: 'chocolate-cookie',
+        price: 6.50,
+        cost: 2.50,
+    };
+    // act
+    store.addProduct(product);
+    const products = store.getProducts();
+
+    // assert
+    assert.deepEqual(products[products.length - 1], product);
+});
