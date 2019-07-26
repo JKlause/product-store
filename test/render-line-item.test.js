@@ -42,4 +42,4 @@ test('renders a line item with remove button', assert => {
     const dom = renderLineItemWithRemove(customerOrderItem, sandwich);
     const html = dom.outerHTML;
     assert.equal(html, expected);
-})
+});

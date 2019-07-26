@@ -1,7 +1,6 @@
 import { getLineTotal } from './register.js';
 import { toUSD } from './format-dollar.js';
 import store from './data/store.js';
-import { renderShoppingCartItems } from './shopping-cart.js';
 
 function renderLineItem(customerOrderItem, sandwich) {
     const tr = document.createElement('tr');
@@ -82,4 +81,3 @@ export function renderLineItemWithRemove(customerOrderItem, sandwich) {
 
 }
 // is my remove not working?
-//change renderShoppingCartItems test.
