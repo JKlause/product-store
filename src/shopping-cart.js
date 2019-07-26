@@ -26,6 +26,7 @@ clearCartButton.addEventListener('click', () => {
     if(confirmClearCart) {
         for(let i = 0; i < shoppingCart.length; i++) {
             store.remove(shoppingCart[i].code);
+            window.location.reload();
         } 
     }
 });
