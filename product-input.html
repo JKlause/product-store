@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add A Product</title>
+    <link rel="stylesheet" href="src/main.css">
+    <link rel="stylesheet" href="src/product-entry.css">
+</head>
+<body>
+    <header>
+        <h1>Input An Ice Cream Sandwich To Database</h1>
+        <nav>
+                <a class="nav" href="index.html">Homepage</a>
+                <a class="nav" href="products.html">Flavors</a>
+                <a class="nav" href="shopping-cart.html">Shopping Cart</a>
+                <a class="nav" href="product-input.html">Product Input</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Add a Sandwich</h2>
+
+        <form id="product-input-form">
+            <p>
+                <label for="code">Code:</label>
+                <input id="code" required name="code" type="text">
+            </p>
+            <p>
+                <label for="name">Name:</label>
+                <input id="name" required name="name" type="text">
+            </p>
+            <p>
+                <label for="image">Image:</label>
+                <input id="image" required name="image" type="file">
+            </p>
+            <p>
+                <label for="description">Description:</label>
+                <textarea id="description" required name="description"></textarea>
+            </p>
+            <p>
+                <label for="category">Category:</label>
+                <input id="category" required name="category" type="text">
+            </p>
+            <p
+            <p>
+                <label for="price">Price:</label>
+                <input id="price" required name="price" type="number" step=".01">
+            </p>
+            <p>
+                <label for="cost">Cost:</label>
+                <input id="cost" required name="price" type="number" step=".01">
+            </p>
+            <p>
+                <button id="add-button">Add Sandwich</button>
+            </p>
+        </form>
+
+    </main>
+    
+</body>
+</html>
