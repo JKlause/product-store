@@ -75,7 +75,5 @@ function validateAndApplyPromoDiscount() {
 //     console.log(shoppingCart, '3');
 // }
 
-//put in shopping cart icon (weekend project)
-//build homepage, update css (5 hours)
 
-//my remove function doesn't seem to be working
+//my remove function doesn't work without a hard window reload. That is why function update shopping cart is commented out.

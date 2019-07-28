@@ -1,4 +1,5 @@
 export default renderSandwich;
+
 import store from './data/store.js';
 
 function renderSandwich(sandwich) {

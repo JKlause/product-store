@@ -71,7 +71,7 @@ const store = {
         const indexOfProduct = shoppingCart.findIndex(i => i.code === code);
         shoppingCart.splice(indexOfProduct, 1);
         store.save('shopping-cart', shoppingCart);
-        // window.location.reload();  //this line making my page strobe
+        window.location.reload();  //this line making my page strobe
         shoppingCart = store.getShoppingCart();
         // console.log(shoppingCart, 'return');
         return shoppingCart;

@@ -35,9 +35,3 @@ export function renderRemoveProductLineItem(sandwich) {
     tr.appendChild(removeProductButtonCell);
     return tr;
 }
-
-// render products in table with remove button
-// wire button to remove product from local storage
-// wire button to remove parent element (tr)
-
-//test rendering line item with remove into tbody
