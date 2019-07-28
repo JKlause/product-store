@@ -1,4 +1,5 @@
 import store from './data/store.js';
+import sandwiches from '../src/data/sandwiches.js';
 import { renderRemoveProductLineItem } from '../src/render-remove-product-line-item.js';
 
 const form = document.getElementById('product-input-form');
@@ -33,5 +34,12 @@ function renderRemoveProductList() {
         const product = products[i];
         const dom = renderRemoveProductLineItem(product);
         removeProductList.appendChild(dom);
+    }
+}
+
+
+if(store.getProducts() === {}) {
+    for(let i = 0; i < sandwiches.length; i++) {
+        store.addProduct(sandwiches[i]);
     }
 }
