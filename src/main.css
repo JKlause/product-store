@@ -21,3 +21,11 @@ h1 {
 .hidden {
     display: none;
 }
+
+.left-align {
+    text-align: left;
+}
+
+.center-align {
+    text-align: center;
+}

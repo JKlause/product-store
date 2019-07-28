@@ -1,0 +1,63 @@
+table {
+    border: 1px solid #aaa;
+    border-collapse: collapse;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+thead {
+    background: rgb(118, 110, 150);
+    color: white;
+}
+
+tbody {
+    background: white;
+}
+
+tfoot {
+    background: rgb(128, 97, 138);
+    color: white;
+}
+
+table th, table td {
+    text-align: right;
+    padding: 10px;
+}
+
+tbody tr:nth-child(even) {
+    background: rgb(233, 206, 238);
+}
+
+
+table, .order-now-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.order-now-container {
+    text-align: right;
+}
+
+
+.order-now-container button {
+    margin-top: 20px;
+    height: 40px;
+    width: 150px;
+    font-size: 1em;
+    background-color: rgb(127, 90, 207);
+    color: white;
+}
+
+.promo-code-area {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+#promo-code-button {
+    margin-left: 10%;
+}
+
+#clear-shopping-cart-button {
+    margin-left: 5%;
+}

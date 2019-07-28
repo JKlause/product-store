@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add A Product</title>
+    <link rel="stylesheet" href="src/main.css">
+    <link rel="stylesheet" href="src/product-input.css">
+</head>
+<body>
+    <header>
+        <h1>Input An Ice Cream Sandwich To Database</h1>
+        <nav>
+                <a class="nav" href="index.html">Homepage</a>
+                <a class="nav" href="products.html">Flavors</a>
+                <a class="nav" href="shopping-cart.html">Shopping Cart</a>
+                <a class="nav" href="product-input.html">Product Input</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Add a Sandwich</h2>
+
+        <form id="product-input-form">
+            <p>
+                <label for="code">Code:</label>
+                <input id="code" required name="code" type="text">
+            </p>
+            <p>
+                <label for="name">Name:</label>
+                <input id="name" required name="name" type="text">
+            </p>
+            <p>
+                <label for="description">Description:</label>
+                <textarea id="description" required name="description"></textarea>
+            </p>
+            <p>
+                <label for="category">Category:</label>
+                <input id="category" required name="category" type="text">
+            </p>
+            <p
+            <p>
+                <label for="price">Price:</label>
+                <input id="price" required name="price" type="number" step=".01">
+            </p>
+            <p>
+                <label for="cost">Cost:</label>
+                <input id="cost" required name="cost" type="number" step=".01">
+            </p>
+            <p>
+                <button>Add Sandwich</button>
+            </p>
+        </form>
+
+        <h2>Remove A Product</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th class="left-align">Ice Cream Sandwich</th>
+                    <th>Product Code</th>
+                    <th>Price</th>
+                    <th>Cost</th>
+                    <th>Remove Items</th>
+                </tr>
+            </thead>
+            <tbody id="remove-item-list">
+                <tr>
+                    <td class="left-align">Red Eye</td>
+                    <td class="left-align">'red-eye'</td>
+                    <td>6.50</td>
+                    <td>2.50</td>
+                    <td><button id="remove-product-button">Remove Product</button></td>
+                </tr>
+                <tr>
+                    <td class="left-align">Red Eye</td>
+                    <td class="left-align">'red-eye'</td>
+                    <td>6.50</td>
+                    <td>2.50</td>
+                    <td><button id="remove-product-button">Remove Product</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </main>
+    <script src="./src/product-input.js" type="module"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 import renderSandwich from '../src/render-sandwich.js';
-import sandwiches from '../src/data/sandwiches.js';
+import store from './data/store.js';
 
 const regCookieButton = document.getElementById('reg-button');
 const chocCookieButton = document.getElementById('choc-button');
@@ -35,9 +35,10 @@ showAllCookieButton.addEventListener('click', () => {
 
 function renderFlavorList() {
     const flavorsList = document.getElementById('flavors');
-    for(let i = 0; i < sandwiches.length; i++) {
-        const sandwich = sandwiches[i];
-        const dom = renderSandwich(sandwich);
+    const products = store.getProducts();
+    for(let i = 0; i < products.length; i++) {
+        const product = products[i];
+        const dom = renderSandwich(product);
         flavorsList.appendChild(dom);
     }
 }
