@@ -11,7 +11,6 @@ QUnit.testStart(() => {
     store.storage.clear();
 });
 
-
 test('get and save', assert => {
     // arrange
     const key = 'dog';

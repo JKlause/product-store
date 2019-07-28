@@ -71,10 +71,19 @@ const store = {
         const indexOfProduct = shoppingCart.findIndex(i => i.code === code);
         shoppingCart.splice(indexOfProduct, 1);
         store.save('shopping-cart', shoppingCart);
-        // window.location.reload();  //this line making my page strobe
+        window.location.reload();  //this line making my page strobe
         shoppingCart = store.getShoppingCart();
-        console.log(shoppingCart, 'return');
+        // console.log(shoppingCart, 'return');
         return shoppingCart;
+    },
+    removeProduct(code) {
+        let products = store.getProducts();
+        const indexOfProduct = products.findIndex(i => i.code === code);
+        products.splice(indexOfProduct, 1);
+        store.save('products', products);
+        window.location.reload(); 
+        products = store.getProducts();
+        return products;
     },
 };
 

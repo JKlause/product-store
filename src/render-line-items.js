@@ -1,3 +1,5 @@
+export default renderLineItem;
+
 import { getLineTotal } from './register.js';
 import { toUSD } from './format-dollar.js';
 import store from './data/store.js';
@@ -25,9 +27,6 @@ function renderLineItem(customerOrderItem, sandwich) {
 
     return tr;
 }
-
-
-export default renderLineItem;
 
 export function renderNoLineItem() {
     const tr = document.createElement('tr');
@@ -76,3 +75,4 @@ export function renderLineItemWithRemove(customerOrderItem, sandwich) {
 
     return tr;
 }
+

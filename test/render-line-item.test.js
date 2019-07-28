@@ -3,6 +3,7 @@ import { findProduct } from '../src/register.js';
 import renderLineItem from '../src/render-line-items.js';
 import { renderNoLineItem, renderLineItemWithRemove } from '../src/render-line-items.js';
 
+
 const test = QUnit.test;
 
 QUnit.module('Render Line Item');
