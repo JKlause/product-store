@@ -1,4 +1,5 @@
 import store from './data/store.js';
+import { renderRemoveProductLineItem } from '../src/render-remove-product-line-item.js';
 
 const form = document.getElementById('product-input-form');
 
@@ -18,6 +19,19 @@ form.addEventListener('submit', (event) => {
     alert('New Ice Cream Sandwich Product Added');
     form.reset();
 });
+
+renderRemoveProductList();
+
+function renderRemoveProductList() {
+    const removeProductList = document.getElementById('remove-item-list');
+    const products = store.getProducts();
+    for(let i = 0; i < products.length; i++) {
+        const product = products[i];
+        const dom = renderRemoveProductLineItem(product);
+        removeProductList.appendChild(dom);
+    }
+}
+
 
 //render table of products
     // name, code, price, remove button
