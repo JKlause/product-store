@@ -26,7 +26,9 @@ clearCartButton.addEventListener('click', () => {
     if(confirmClearCart) {
         for(let i = 0; i < shoppingCart.length; i++) {
             store.remove(shoppingCart[i].code);
-        } 
+        } store.getShoppingCart();
+        console.log(shoppingCart, 0);
+        updateShoppingCart(); //this isn't working.
     }
 });
 
@@ -63,6 +65,15 @@ function validateAndApplyPromoDiscount() {
     }
 }
 
+
+function updateShoppingCart() {
+    while(shoppingCartList.firstChild) {
+        shoppingCartList.removeChild(shoppingCartList.firstChild);
+        console.log(shoppingCart, '1');
+    } console.log(shoppingCart, '2');
+    renderShoppingCartItems(shoppingCart);
+    console.log(shoppingCart, '3');
+}
 
 //put in shopping cart icon (weekend project)
 //build homepage, update css (5 hours)
