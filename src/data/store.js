@@ -66,7 +66,7 @@ const store = {
         }
         store.save('shopping-cart', shoppingCart);
     },
-    remove(code) {
+    removeFromCart(code) {
         let shoppingCart = store.getShoppingCart();
         const indexOfProduct = shoppingCart.findIndex(i => i.code === code);
         shoppingCart.splice(indexOfProduct, 1);

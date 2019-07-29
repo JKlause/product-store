@@ -25,7 +25,7 @@ clearCartButton.addEventListener('click', () => {
     const confirmClearCart = confirm('Are you sure you want to clear your shopping cart?');
     if(confirmClearCart) {
         for(let i = 0; i < shoppingCart.length; i++) {
-            store.remove(shoppingCart[i].code);
+            store.removeFromCart(shoppingCart[i].code);
         } store.getShoppingCart();
         // console.log(shoppingCart, 0);
         // updateShoppingCart(); //this isn't working.
