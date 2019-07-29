@@ -47,6 +47,8 @@ function renderOrderTotal(discount) {
     orderTotalCell.textContent = toUSD(calcOrderTotal(shoppingCart, sandwiches, discount));
 }
 
+//fix the reference to sandwiches to products in renderOrderTotal
+
 function validateAndApplyPromoDiscount() {
     const promoCode = customerPromoCode.value;
     let discountApplied;

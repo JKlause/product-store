@@ -13,6 +13,14 @@ export function getLineTotal(quantity, price) {
     return (quantity * price);
 }
 
+export function getRevenueLineItemTotal(quantity, price) {
+    return (quantity * price);
+}
+
+export function getProfitLineItemTotal(quantity, price, cost) {
+    return ((quantity * price) - (quantity * cost));
+}
+
 export function calcOrderTotal(order, products, discount) {
     let orderTotal = 0;
 

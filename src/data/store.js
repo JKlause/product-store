@@ -84,6 +84,7 @@ const store = {
         products = store.getProducts();
         return products;
     },
+    getSales()
 };
 
 export default store;
