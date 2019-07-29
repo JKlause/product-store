@@ -21,7 +21,32 @@
             <a class="nav" href="product-input.html">Product Input</a>
             <a class="nav" href="sales-sheet.html">Sales Sheet</a>
         </nav>
-        
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="left-align">Ice Cream Sandwich</th>
+                    <th>Qty Sold</th>
+                    <th>Price</th>
+                    <th>Cost</th>
+                    <th>Revenue</th>
+                    <th>Profit</th>
+                </tr>
+            </thead>
+
+            <tbody id='sales-sheet-body'></tbody>
+            <tfoot>
+                <tr>
+                    <th class="left-align">Totals:</th>
+                    <th></th>
+                    <th></th>
+                    <th id="total-cost-cell"> </th>
+                    <th id="total-revenue-cell"></th>
+                    <th id="total-profit-cell"></th>
+                </tr>
+            </tfoot>
+        </table>
+
     </main>
     <script src="./src/sales-sheet.js" type="module"></script>
 </body>
