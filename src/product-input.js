@@ -3,12 +3,14 @@ import sandwiches from '../src/data/sandwiches.js';
 import { renderRemoveProductLineItem } from '../src/render-remove-product-line-item.js';
 
 const form = document.getElementById('product-input-form');
+const removeProductList = document.getElementById('remove-item-list');
 
 renderRemoveProductList();
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     inputNewProductFromForm();
+    updateRemoveProductList();
 });
 
 function inputNewProductFromForm() {
@@ -22,13 +24,14 @@ function inputNewProductFromForm() {
         price: formData.get('price'),
         cost: formData.get('cost'),
     };
+
     store.addProduct(product);
     alert('New Ice Cream Sandwich Product Added');
     form.reset();
+
 }
 
 function renderRemoveProductList() {
-    const removeProductList = document.getElementById('remove-item-list');
     const products = store.getProducts();
     for(let i = 0; i < products.length; i++) {
         const product = products[i];
@@ -42,4 +45,11 @@ if(store.getProducts() === {}) {
     for(let i = 0; i < sandwiches.length; i++) {
         store.addProduct(sandwiches[i]);
     }
+}
+
+function updateRemoveProductList() {
+    while(removeProductList.firstChild) {
+        removeProductList.removeChild(removeProductList.firstChild);
+    }
+    renderRemoveProductList();
 }

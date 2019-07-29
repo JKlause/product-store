@@ -60,3 +60,7 @@ tbody tr:nth-child(even) {
     width: 70vw;
     padding: 4vw;
 }
+
+#add-sandwich-title {
+    margin-bottom: 3.2vw;
+}
