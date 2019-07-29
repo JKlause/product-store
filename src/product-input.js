@@ -13,6 +13,12 @@ form.addEventListener('submit', (event) => {
     updateRemoveProductList();
 });
 
+if(store.getProducts() === {}) {
+    for(let i = 0; i < sandwiches.length; i++) {
+        store.addProduct(sandwiches[i]);
+    }
+}
+
 function inputNewProductFromForm() {
     const formData = new FormData(form);
     const product = {
@@ -24,11 +30,9 @@ function inputNewProductFromForm() {
         price: formData.get('price'),
         cost: formData.get('cost'),
     };
-
     store.addProduct(product);
     alert('New Ice Cream Sandwich Product Added');
     form.reset();
-
 }
 
 function renderRemoveProductList() {
@@ -37,13 +41,6 @@ function renderRemoveProductList() {
         const product = products[i];
         const dom = renderRemoveProductLineItem(product);
         removeProductList.appendChild(dom);
-    }
-}
-
-
-if(store.getProducts() === {}) {
-    for(let i = 0; i < sandwiches.length; i++) {
-        store.addProduct(sandwiches[i]);
     }
 }
 

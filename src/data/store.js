@@ -71,9 +71,8 @@ const store = {
         const indexOfProduct = shoppingCart.findIndex(i => i.code === code);
         shoppingCart.splice(indexOfProduct, 1);
         store.save('shopping-cart', shoppingCart);
-        window.location.reload();  //this line making my page strobe
+        window.location.reload();  //this line making my test page strobe
         shoppingCart = store.getShoppingCart();
-        // console.log(shoppingCart, 'return');
         return shoppingCart;
     },
     removeProduct(code) {
@@ -81,7 +80,7 @@ const store = {
         const indexOfProduct = products.findIndex(i => i.code === code);
         products.splice(indexOfProduct, 1);
         store.save('products', products);
-        window.location.reload(); 
+        window.location.reload();   //this line making my test page strobe
         products = store.getProducts();
         return products;
     },

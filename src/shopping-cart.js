@@ -26,9 +26,7 @@ clearCartButton.addEventListener('click', () => {
     if(confirmClearCart) {
         for(let i = 0; i < shoppingCart.length; i++) {
             store.removeFromCart(shoppingCart[i].code);
-        } store.getShoppingCart();
-        // console.log(shoppingCart, 0);
-        // updateShoppingCart(); //this isn't working.
+        }
     }
 });
 
@@ -64,16 +62,3 @@ function validateAndApplyPromoDiscount() {
         alert('Invalid Promo Code');
     }
 }
-
-
-// function updateShoppingCart() {
-//     while(shoppingCartList.firstChild) {
-//         shoppingCartList.removeChild(shoppingCartList.firstChild);
-//         console.log(shoppingCart, '1');
-//     } console.log(shoppingCart, '2');
-//     renderShoppingCartItems(shoppingCart);
-//     console.log(shoppingCart, '3');
-// }
-
-
-//my remove function doesn't work without a hard window reload. That is why function update shopping cart is commented out.

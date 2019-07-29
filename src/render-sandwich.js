@@ -127,5 +127,4 @@ function renderSandwich(sandwich) {
     li.appendChild(p);
 
     return li;
-
 }

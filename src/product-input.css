@@ -34,6 +34,12 @@ tbody tr:nth-child(even) {
     background: rgb(233, 206, 238);
 }
 
+.container {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10vh;
+}
+
 #remove-product-button {
     background: rgb(206, 221, 238);
     border: 3px solid rgb(70, 68, 68);
@@ -43,12 +49,6 @@ tbody tr:nth-child(even) {
 
 #other-pies-to-try td, #other-pies-to-try th {
     text-align: left;
-}
-
-.container {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 10vh;
 }
 
 #add-sandwich-form {
