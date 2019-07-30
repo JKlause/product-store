@@ -24,7 +24,7 @@ function inputNewProductFromForm() {
     const product = {
         code: formData.get('code'),
         name: formData.get('name'),
-        image: `assets/${formData.get('code')}.jpg`,
+        image: formData.get('image'),
         description: formData.get('description'),
         category: formData.get('category'),
         price: formData.get('price'),
