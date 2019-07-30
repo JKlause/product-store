@@ -66,6 +66,20 @@ const store = {
         }
         store.save('shopping-cart', shoppingCart);
     },
+    placeOrder(code, quantity) {
+        const salesArray = store.getSales();
+        const product = findProduct(salesArray, code);
+        if(product) {
+            product.quantity = +product.quantity + +quantity;
+        } else {
+            const newProduct = {
+                code: code,
+                quantity: quantity,
+            };
+            salesArray.push(newProduct);
+        }
+        store.save('sales', salesArray);
+    },
     removeFromCart(code) {
         let shoppingCart = store.getShoppingCart();
         const indexOfProduct = shoppingCart.findIndex(i => i.code === code);
@@ -82,6 +96,15 @@ const store = {
         products = store.getProducts();
         return products;
     },
+    getSales() {
+        let sales = store.get('sales');
+
+        if(!sales) {
+            return [];
+        }
+        return sales;
+    },
+    
 };
 
 export default store;
