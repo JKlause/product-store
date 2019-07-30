@@ -104,7 +104,41 @@ const store = {
         }
         return sales;
     },
+    orderAndTrackSaleOfProduct(code, quantity) {
+        const shoppingCart = store.getShoppingCart();
+        const salesArray = store.getSales();
+        const product = findProduct(shoppingCart, code);
+        if(quantity) {
+            if(product) {
+                product.quantity = +product.quantity + +quantity;
+            } else {
+                const newProduct = {
+                    code: code,
+                    quantity: quantity,
+                };
+                shoppingCart.push(newProduct);
+                salesArray.push(newProduct);
+            } 
+        }
+        // else {
+        //     if(product) {
+        //         product.quantity++;
+        //     } else {
+        //         const newProduct = {
+        //             code: code,
+        //             quantity: 1,
+        //         };
+        //         shoppingCart.push(newProduct);
+        //     } 
+        // } 
+        store.save('shopping-cart', shoppingCart);
+        store.save('sales', salesArray);
+    },
     
 };
 
 export default store;
+
+//write test for orderAndTrackSales
+//look for orderProduct()instances and see if it is always passed a quantity
+//remove order product and place order, update tests
