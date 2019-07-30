@@ -1,6 +1,7 @@
 import store from './data/store.js';
 import sandwiches from '../src/data/sandwiches.js';
 import { renderRemoveProductLineItem } from '../src/render-remove-product-line-item.js';
+import { clearingOutListBeforeReRender } from './shopping-cart.js';
 
 const form = document.getElementById('product-input-form');
 const removeProductList = document.getElementById('remove-item-list');
@@ -24,7 +25,7 @@ function inputNewProductFromForm() {
     const product = {
         code: formData.get('code'),
         name: formData.get('name'),
-        image: `assets/${formData.get('code')}.jpg`,
+        image: formData.get('image'),
         description: formData.get('description'),
         category: formData.get('category'),
         price: formData.get('price'),
@@ -45,8 +46,6 @@ function renderRemoveProductList() {
 }
 
 function updateRemoveProductList() {
-    while(removeProductList.firstChild) {
-        removeProductList.removeChild(removeProductList.firstChild);
-    }
+    clearingOutListBeforeReRender(removeProductList);
     renderRemoveProductList();
 }

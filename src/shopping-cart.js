@@ -1,4 +1,3 @@
-import sandwiches from './data/sandwiches.js';
 import { calcOrderTotal } from './register.js';
 import store from './data/store.js';
 import { renderNoLineItem, renderLineItemWithRemove } from './render-line-items.js';
@@ -28,13 +27,12 @@ clearCartButton.addEventListener('click', () => {
             store.removeFromCart(shoppingCart[i].code);
         }
         shoppingCart = store.getShoppingCart();
-        while(shoppingCartList.firstChild) {
-            shoppingCartList.removeChild(shoppingCartList.firstChild);
-        }
+        clearingOutListBeforeReRender(shoppingCartList);
         renderShoppingCartItems(shoppingCart);
         updateOrderTotal();
     }
 });
+
 
 export function renderShoppingCartItems(shoppingCart) {
     if(shoppingCart.length === 0) {
@@ -48,16 +46,16 @@ export function renderShoppingCartItems(shoppingCart) {
         shoppingCartList.appendChild(dom);
     }
 }
+
 function updateOrderTotal() {
     shoppingCart = store.getShoppingCart();
     renderOrderTotal();
 }
 
 function renderOrderTotal(discount) {
+    const sandwiches = store.getProducts();
     orderTotalCell.textContent = toUSD(calcOrderTotal(shoppingCart, sandwiches, discount));
 }
-
-//fix the reference to sandwiches to products in renderOrderTotal
 
 function validateAndApplyPromoDiscount() {
     const promoCode = customerPromoCode.value;
@@ -72,5 +70,11 @@ function validateAndApplyPromoDiscount() {
     }
     if(!discountApplied) {
         alert('Invalid Promo Code');
+    }
+}
+
+export function clearingOutListBeforeReRender(list) {
+    while(list.length) {
+        list.removeChild(list.firstChild);
     }
 }
