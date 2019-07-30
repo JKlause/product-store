@@ -69,7 +69,9 @@ export function renderLineItemWithRemove(customerOrderItem, sandwich, callback, 
         const confirmRemoveSandwich = confirm('Are you sure you want to remove this item from your shopping cart?');
         if(confirmRemoveSandwich) {
             store.removeFromCart(sandwich.code);
-            clearingOutListBeforeReRender(shoppingCartList);
+            while(shoppingCartList.length) {
+                shoppingCartList.removeChild(shoppingCartList.firstChild);
+            }
             const shoppingCart = store.getShoppingCart();
             callBack2(shoppingCart);
             callback();

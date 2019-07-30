@@ -12,6 +12,7 @@ const customerPromoCode = document.getElementById('promo-code-input-box');
 const discountRow = document.getElementById('discount-row');
 const discountCell = document.getElementById('discount-cell');
 let shoppingCart = store.getShoppingCart();
+debugger;
 
 renderShoppingCartItems(shoppingCart);
 renderOrderTotal();
@@ -27,12 +28,13 @@ clearCartButton.addEventListener('click', () => {
             store.removeFromCart(shoppingCart[i].code);
         }
         shoppingCart = store.getShoppingCart();
-        clearingOutListBeforeReRender(shoppingCartList);
+        while(shoppingCartList.length) {
+            shoppingCartList.removeChild(shoppingCartList.firstChild);
+        }
         renderShoppingCartItems(shoppingCart);
         updateOrderTotal();
     }
 });
-
 
 export function renderShoppingCartItems(shoppingCart) {
     if(shoppingCart.length === 0) {

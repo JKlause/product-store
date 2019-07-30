@@ -46,6 +46,8 @@ function renderRemoveProductList() {
 }
 
 function updateRemoveProductList() {
-    clearingOutListBeforeReRender(removeProductList);
+    while(removeProductList.length) {
+        removeProductList.removeChild(removeProductList.firstChild);
+    }
     renderRemoveProductList();
 }
