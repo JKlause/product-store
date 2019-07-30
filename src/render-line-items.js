@@ -3,6 +3,7 @@ export default renderLineItem;
 import { getLineTotal } from './register.js';
 import { toUSD } from './format-dollar.js';
 import store from './data/store.js';
+import { clearingOutListBeforeReRender } from './shopping-cart.js';
 
 
 function renderLineItem(customerOrderItem, sandwich) {
@@ -68,9 +69,7 @@ export function renderLineItemWithRemove(customerOrderItem, sandwich, callback, 
         const confirmRemoveSandwich = confirm('Are you sure you want to remove this item from your shopping cart?');
         if(confirmRemoveSandwich) {
             store.removeFromCart(sandwich.code);
-            while(shoppingCartList.firstChild) {
-                shoppingCartList.removeChild(shoppingCartList.firstChild);
-            }
+            clearingOutListBeforeReRender(shoppingCartList);
             const shoppingCart = store.getShoppingCart();
             callBack2(shoppingCart);
             callback();
