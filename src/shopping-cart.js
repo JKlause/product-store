@@ -1,4 +1,3 @@
-import sandwiches from './data/sandwiches.js';
 import { calcOrderTotal } from './register.js';
 import store from './data/store.js';
 import { renderNoLineItem, renderLineItemWithRemove } from './render-line-items.js';
@@ -54,10 +53,10 @@ function updateOrderTotal() {
 }
 
 function renderOrderTotal(discount) {
+    const sandwiches = store.getProducts();
     orderTotalCell.textContent = toUSD(calcOrderTotal(shoppingCart, sandwiches, discount));
 }
 
-//fix the reference to sandwiches to products in renderOrderTotal
 
 function validateAndApplyPromoDiscount() {
     const promoCode = customerPromoCode.value;
