@@ -40,7 +40,7 @@ export function renderNoLineItem() {
     return tr;
 }
 
-export function renderLineItemWithRemove(customerOrderItem, sandwich) {
+export function renderLineItemWithRemove(customerOrderItem, sandwich, callback, callBack2, shoppingCartList) {
     const tr = document.createElement('tr');
 
     const nameCell = document.createElement('td');
@@ -68,6 +68,12 @@ export function renderLineItemWithRemove(customerOrderItem, sandwich) {
         const confirmRemoveSandwich = confirm('Are you sure you want to remove this item from your shopping cart?');
         if(confirmRemoveSandwich) {
             store.removeFromCart(sandwich.code);
+            while(shoppingCartList.firstChild) {
+                shoppingCartList.removeChild(shoppingCartList.firstChild);
+            }
+            const shoppingCart = store.getShoppingCart();
+            callBack2(shoppingCart);
+            callback();
         }
     });
     removeButtonCell.appendChild(removeButton);

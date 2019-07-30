@@ -30,6 +30,7 @@ export function renderRemoveProductLineItem(sandwich) {
         const confirmRemoveProduct = confirm('Are you sure you want to remove this product from your "Products For Sale" List?');
         if(confirmRemoveProduct) {
             store.removeProduct(sandwich.code);
+            tr.remove();
         }
     });
     removeProductButtonCell.appendChild(removeProductButton);

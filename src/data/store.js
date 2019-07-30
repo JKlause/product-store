@@ -71,7 +71,6 @@ const store = {
         const indexOfProduct = shoppingCart.findIndex(i => i.code === code);
         shoppingCart.splice(indexOfProduct, 1);
         store.save('shopping-cart', shoppingCart);
-        window.location.reload();  //this line making my test page strobe
         shoppingCart = store.getShoppingCart();
         return shoppingCart;
     },
@@ -80,11 +79,9 @@ const store = {
         const indexOfProduct = products.findIndex(i => i.code === code);
         products.splice(indexOfProduct, 1);
         store.save('products', products);
-        window.location.reload();   //this line making my test page strobe
         products = store.getProducts();
         return products;
     },
-    getSales()
 };
 
 export default store;

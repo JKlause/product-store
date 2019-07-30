@@ -12,7 +12,7 @@ const clearCartButton = document.getElementById('clear-shopping-cart-button');
 const customerPromoCode = document.getElementById('promo-code-input-box');
 const discountRow = document.getElementById('discount-row');
 const discountCell = document.getElementById('discount-cell');
-const shoppingCart = store.getShoppingCart();
+let shoppingCart = store.getShoppingCart();
 
 renderShoppingCartItems(shoppingCart);
 renderOrderTotal();
@@ -27,6 +27,12 @@ clearCartButton.addEventListener('click', () => {
         for(let i = 0; i < shoppingCart.length; i++) {
             store.removeFromCart(shoppingCart[i].code);
         }
+        shoppingCart = store.getShoppingCart();
+        while(shoppingCartList.firstChild) {
+            shoppingCartList.removeChild(shoppingCartList.firstChild);
+        }
+        renderShoppingCartItems(shoppingCart);
+        updateOrderTotal();
     }
 });
 
@@ -38,9 +44,13 @@ export function renderShoppingCartItems(shoppingCart) {
     for(let i = 0; i < shoppingCart.length; i++) {
         const customerOrderItem = shoppingCart[i];
         const sandwich = store.getProduct(customerOrderItem.code);
-        const dom = renderLineItemWithRemove(customerOrderItem, sandwich);
+        const dom = renderLineItemWithRemove(customerOrderItem, sandwich, updateOrderTotal, renderShoppingCartItems, shoppingCartList);
         shoppingCartList.appendChild(dom);
     }
+}
+function updateOrderTotal() {
+    shoppingCart = store.getShoppingCart();
+    renderOrderTotal();
 }
 
 function renderOrderTotal(discount) {
