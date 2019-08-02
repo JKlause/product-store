@@ -2,7 +2,6 @@ import renderSalesSheetLineItem from './render-sales-sheet-line-item.js';
 import store from './data/store.js';
 import { toUSD } from './format-dollar.js';
 import { getRevenueLineItemTotal, getProfitLineItemTotal } from './register.js';
-import sandwiches from './data/sandwiches.js';
 
 const salesSheetTableBody = document.getElementById('sales-sheet-body');
 const totalProductsSoldCell = document.getElementById('total-products-sold-cell');
