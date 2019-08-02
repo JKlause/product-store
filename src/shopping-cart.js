@@ -11,6 +11,7 @@ const clearCartButton = document.getElementById('clear-shopping-cart-button');
 const customerPromoCode = document.getElementById('promo-code-input-box');
 const discountRow = document.getElementById('discount-row');
 const discountCell = document.getElementById('discount-cell');
+const placeOrderButton = document.getElementById('place-order-button');
 let shoppingCart = store.getShoppingCart();
 
 renderShoppingCartItems(shoppingCart);
@@ -25,14 +26,33 @@ clearCartButton.addEventListener('click', () => {
     if(confirmClearCart) {
         for(let i = 0; i < shoppingCart.length; i++) {
             store.removeFromCart(shoppingCart[i].code);
-        }
-        shoppingCart = store.getShoppingCart();
+        } 
         while(shoppingCartList.firstChild) {
             shoppingCartList.removeChild(shoppingCartList.firstChild);
         }
+        shoppingCart = store.getShoppingCart();
+        
         renderShoppingCartItems(shoppingCart);
         updateOrderTotal();
     }
+});
+
+placeOrderButton.addEventListener('click', () => {
+    for(let i = 0; i < shoppingCart.length; i++) {
+        const product = shoppingCart[i];
+        store.trackSales(product.code, product.quantity);
+    }
+    for(let i = 0; i < shoppingCart.length; i++) {
+        store.removeFromCart(shoppingCart[i].code);
+    }
+    while(shoppingCartList.firstChild) {
+        shoppingCartList.removeChild(shoppingCartList.firstChild);
+    }
+    shoppingCart = store.getShoppingCart();
+    
+    renderShoppingCartItems(shoppingCart);
+    updateOrderTotal();
+    alert('Your Order Has been Placed. Thank you!');
 });
 
 export function renderShoppingCartItems(shoppingCart) {
@@ -47,6 +67,7 @@ export function renderShoppingCartItems(shoppingCart) {
         shoppingCartList.appendChild(dom);
     }
 }
+
 function updateOrderTotal() {
     shoppingCart = store.getShoppingCart();
     renderOrderTotal();
@@ -56,7 +77,6 @@ function renderOrderTotal(discount) {
     const sandwiches = store.getProducts();
     orderTotalCell.textContent = toUSD(calcOrderTotal(shoppingCart, sandwiches, discount));
 }
-
 
 function validateAndApplyPromoDiscount() {
     const promoCode = customerPromoCode.value;

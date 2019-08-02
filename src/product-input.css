@@ -7,7 +7,9 @@ table {
     margin-right: auto;
 }
 
-
+td, th {
+    border: 2px solid #aaa;
+}
 
 thead {
     background: rgb(118, 110, 150);

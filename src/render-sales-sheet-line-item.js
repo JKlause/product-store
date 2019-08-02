@@ -1,8 +1,8 @@
-import toUSD from './format-dollar.js';
-import { getRevenueLineItemTotal, getProfitLineItemTotal } from './register,js';
+import { toUSD } from './format-dollar.js';
+import { getRevenueLineItemTotal, getProfitLineItemTotal } from './register.js';
 
 
-export default function renderSalesSheetLineItem(customerOrderItem, sandwich) {
+export default function renderSalesSheetLineItem(quantity, sandwich) {
     const tr = document.createElement('tr');
 
     const nameCell = document.createElement('td');
@@ -11,7 +11,7 @@ export default function renderSalesSheetLineItem(customerOrderItem, sandwich) {
     tr.appendChild(nameCell);
 
     const quantityCell = document.createElement('td');
-    quantityCell.textContent = customerOrderItem.quantity;
+    quantityCell.textContent = quantity;
     tr.appendChild(quantityCell);
 
     const priceCell = document.createElement('td');
@@ -23,12 +23,12 @@ export default function renderSalesSheetLineItem(customerOrderItem, sandwich) {
     tr.appendChild(costCell);
 
     const revenueCell = document.createElement('td');
-    revenueCell.textContent = toUSD(getRevenueLineItemTotal(customerOrderItem.quantity, sandwich.price));
+    revenueCell.textContent = toUSD(getRevenueLineItemTotal(quantity, sandwich.price));
     tr.appendChild(revenueCell);
 
     const profitCell = document.createElement('td');
-    profitCell.textContent = toUSD(getProfitLineItemTotal(customerOrderItem.quantity, sandwich.price, sandwich.cost));
-    tr.appendChild(revenueCell);
+    profitCell.textContent = toUSD(getProfitLineItemTotal(quantity, sandwich.price, sandwich.cost));
+    tr.appendChild(profitCell);
 
     return tr;
 }

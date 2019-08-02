@@ -104,37 +104,46 @@ const store = {
         }
         return sales;
     },
+    trackSales(code, quantity) {
+        const salesArray = store.getSales();
+        const product = findProduct(salesArray, code);
+        if(product) {
+            product.quantity = +product.quantity + +quantity;
+        } else {
+            const newProduct = {
+                code: code,
+                quantity: quantity,
+            };
+            salesArray.push(newProduct);
+        } 
+        store.save('sales', salesArray);
+    },
     orderAndTrackSaleOfProduct(code, quantity) {
         const shoppingCart = store.getShoppingCart();
         const salesArray = store.getSales();
-        const product = findProduct(shoppingCart, code);
-        if(quantity) {
-            if(product) {
-                product.quantity = +product.quantity + +quantity;
-            } else {
-                const newProduct = {
-                    code: code,
-                    quantity: quantity,
-                };
-                shoppingCart.push(newProduct);
-                salesArray.push(newProduct);
-            } 
+        const productShoppingCart = findProduct(shoppingCart, code);
+        const productSalesArray = findProduct(salesArray, code);
+        if(productShoppingCart) {
+            productShoppingCart.quantity = +productShoppingCart.quantity + +quantity;
+        } else {
+            const newProductShoppingCart = {
+                code: code,
+                quantity: quantity,
+            };
+            shoppingCart.push(newProductShoppingCart);
+        } store.save('shopping-cart', shoppingCart);
+
+        if(productSalesArray) {
+            productSalesArray.quantity = +productSalesArray.quantity + +quantity;
+        } else {
+            const newProductSalesArray = {
+                code: code,
+                quantity: quantity,
+            };
+            salesArray.push(newProductSalesArray);
         }
-        // else {
-        //     if(product) {
-        //         product.quantity++;
-        //     } else {
-        //         const newProduct = {
-        //             code: code,
-        //             quantity: 1,
-        //         };
-        //         shoppingCart.push(newProduct);
-        //     } 
-        // } 
-        store.save('shopping-cart', shoppingCart);
         store.save('sales', salesArray);
     },
-    
 };
 
 export default store;
