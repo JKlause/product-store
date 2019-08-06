@@ -33,34 +33,3 @@ table th, table td {
 tbody tr:nth-child(even) {
     background: rgb(233, 206, 238);
 }
-
-.container {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 10vh;
-}
-
-#remove-product-button {
-    background: rgb(206, 221, 238);
-    border: 3px solid rgb(70, 68, 68);
-    color:  rgb(70, 68, 68);
-    font-weight: bold;
-}
-
-#other-pies-to-try td, #other-pies-to-try th {
-    text-align: left;
-}
-
-#add-sandwich-form {
-    width: 30vw;
-    padding: 4vw;
-}
-
-#remove-a-product {
-    width: 70vw;
-    padding: 4vw;
-}
-
-#add-sandwich-title {
-    margin-bottom: 3.2vw;
-}

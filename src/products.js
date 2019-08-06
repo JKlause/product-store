@@ -63,3 +63,4 @@ function revealAllFlavors() {
         listedSandwiches[i].classList.remove('hidden');
     }
 }
+

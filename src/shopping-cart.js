@@ -1,4 +1,3 @@
-import sandwiches from './data/sandwiches.js';
 import { calcOrderTotal } from './register.js';
 import store from './data/store.js';
 import { renderNoLineItem, renderLineItemWithRemove } from './render-line-items.js';
@@ -12,7 +11,8 @@ const clearCartButton = document.getElementById('clear-shopping-cart-button');
 const customerPromoCode = document.getElementById('promo-code-input-box');
 const discountRow = document.getElementById('discount-row');
 const discountCell = document.getElementById('discount-cell');
-const shoppingCart = store.getShoppingCart();
+const placeOrderButton = document.getElementById('place-order-button');
+let shoppingCart = store.getShoppingCart();
 
 renderShoppingCartItems(shoppingCart);
 renderOrderTotal();
@@ -25,11 +25,34 @@ clearCartButton.addEventListener('click', () => {
     const confirmClearCart = confirm('Are you sure you want to clear your shopping cart?');
     if(confirmClearCart) {
         for(let i = 0; i < shoppingCart.length; i++) {
-            store.remove(shoppingCart[i].code);
-        } store.getShoppingCart();
-        // console.log(shoppingCart, 0);
-        // updateShoppingCart(); //this isn't working.
+            store.removeFromCart(shoppingCart[i].code);
+        } 
+        while(shoppingCartList.firstChild) {
+            shoppingCartList.removeChild(shoppingCartList.firstChild);
+        }
+        shoppingCart = store.getShoppingCart();
+        
+        renderShoppingCartItems(shoppingCart);
+        updateOrderTotal();
     }
+});
+
+placeOrderButton.addEventListener('click', () => {
+    for(let i = 0; i < shoppingCart.length; i++) {
+        const product = shoppingCart[i];
+        store.trackSales(product.code, product.quantity);
+    }
+    for(let i = 0; i < shoppingCart.length; i++) {
+        store.removeFromCart(shoppingCart[i].code);
+    }
+    while(shoppingCartList.firstChild) {
+        shoppingCartList.removeChild(shoppingCartList.firstChild);
+    }
+    shoppingCart = store.getShoppingCart();
+    
+    renderShoppingCartItems(shoppingCart);
+    updateOrderTotal();
+    alert('Your Order Has been Placed. Thank you!');
 });
 
 export function renderShoppingCartItems(shoppingCart) {
@@ -40,12 +63,18 @@ export function renderShoppingCartItems(shoppingCart) {
     for(let i = 0; i < shoppingCart.length; i++) {
         const customerOrderItem = shoppingCart[i];
         const sandwich = store.getProduct(customerOrderItem.code);
-        const dom = renderLineItemWithRemove(customerOrderItem, sandwich);
+        const dom = renderLineItemWithRemove(customerOrderItem, sandwich, updateOrderTotal, renderShoppingCartItems, shoppingCartList);
         shoppingCartList.appendChild(dom);
     }
 }
 
+function updateOrderTotal() {
+    shoppingCart = store.getShoppingCart();
+    renderOrderTotal();
+}
+
 function renderOrderTotal(discount) {
+    const sandwiches = store.getProducts();
     orderTotalCell.textContent = toUSD(calcOrderTotal(shoppingCart, sandwiches, discount));
 }
 
@@ -64,16 +93,3 @@ function validateAndApplyPromoDiscount() {
         alert('Invalid Promo Code');
     }
 }
-
-
-// function updateShoppingCart() {
-//     while(shoppingCartList.firstChild) {
-//         shoppingCartList.removeChild(shoppingCartList.firstChild);
-//         console.log(shoppingCart, '1');
-//     } console.log(shoppingCart, '2');
-//     renderShoppingCartItems(shoppingCart);
-//     console.log(shoppingCart, '3');
-// }
-
-
-//my remove function doesn't work without a hard window reload. That is why function update shopping cart is commented out.

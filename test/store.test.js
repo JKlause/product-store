@@ -96,7 +96,7 @@ test('remove product', assert => {
     // act
     store.orderProduct('apple-pie');
     store.orderProduct('key-lime-pie', 7);
-    store.remove('apple-pie');
+    store.removeFromCart('apple-pie');
     const shoppingCart = store.getShoppingCart();
     
     // assert

@@ -1,4 +1,5 @@
 import store from '../src/data/store.js';
+import { financial } from './format-dollar.js';
 
 export function renderRemoveProductLineItem(sandwich) {
     const tr = document.createElement('tr');
@@ -14,11 +15,11 @@ export function renderRemoveProductLineItem(sandwich) {
     tr.appendChild(codeCell);
 
     const priceCell = document.createElement('td');
-    priceCell.textContent = sandwich.price.toFixed(2);
+    priceCell.textContent = financial(sandwich.price);
     tr.appendChild(priceCell);
 
     const costCell = document.createElement('td');
-    costCell.textContent = sandwich.cost.toFixed(2);
+    costCell.textContent = financial(sandwich.cost);
     tr.appendChild(costCell);
     
     const removeProductButtonCell = document.createElement('td');
@@ -29,6 +30,7 @@ export function renderRemoveProductLineItem(sandwich) {
         const confirmRemoveProduct = confirm('Are you sure you want to remove this product from your "Products For Sale" List?');
         if(confirmRemoveProduct) {
             store.removeProduct(sandwich.code);
+            tr.remove();
         }
     });
     removeProductButtonCell.appendChild(removeProductButton);

@@ -66,14 +66,26 @@ const store = {
         }
         store.save('shopping-cart', shoppingCart);
     },
-    remove(code) {
+    placeOrder(code, quantity) {
+        const salesArray = store.getSales();
+        const product = findProduct(salesArray, code);
+        if(product) {
+            product.quantity = +product.quantity + +quantity;
+        } else {
+            const newProduct = {
+                code: code,
+                quantity: quantity,
+            };
+            salesArray.push(newProduct);
+        }
+        store.save('sales', salesArray);
+    },
+    removeFromCart(code) {
         let shoppingCart = store.getShoppingCart();
         const indexOfProduct = shoppingCart.findIndex(i => i.code === code);
         shoppingCart.splice(indexOfProduct, 1);
         store.save('shopping-cart', shoppingCart);
-        window.location.reload();  //this line making my page strobe
         shoppingCart = store.getShoppingCart();
-        // console.log(shoppingCart, 'return');
         return shoppingCart;
     },
     removeProduct(code) {
@@ -81,10 +93,61 @@ const store = {
         const indexOfProduct = products.findIndex(i => i.code === code);
         products.splice(indexOfProduct, 1);
         store.save('products', products);
-        window.location.reload(); 
         products = store.getProducts();
         return products;
+    },
+    getSales() {
+        let sales = store.get('sales');
+
+        if(!sales) {
+            return [];
+        }
+        return sales;
+    },
+    trackSales(code, quantity) {
+        const salesArray = store.getSales();
+        const product = findProduct(salesArray, code);
+        if(product) {
+            product.quantity = +product.quantity + +quantity;
+        } else {
+            const newProduct = {
+                code: code,
+                quantity: quantity,
+            };
+            salesArray.push(newProduct);
+        } 
+        store.save('sales', salesArray);
+    },
+    orderAndTrackSaleOfProduct(code, quantity) {
+        const shoppingCart = store.getShoppingCart();
+        const salesArray = store.getSales();
+        const productShoppingCart = findProduct(shoppingCart, code);
+        const productSalesArray = findProduct(salesArray, code);
+        if(productShoppingCart) {
+            productShoppingCart.quantity = +productShoppingCart.quantity + +quantity;
+        } else {
+            const newProductShoppingCart = {
+                code: code,
+                quantity: quantity,
+            };
+            shoppingCart.push(newProductShoppingCart);
+        } store.save('shopping-cart', shoppingCart);
+
+        if(productSalesArray) {
+            productSalesArray.quantity = +productSalesArray.quantity + +quantity;
+        } else {
+            const newProductSalesArray = {
+                code: code,
+                quantity: quantity,
+            };
+            salesArray.push(newProductSalesArray);
+        }
+        store.save('sales', salesArray);
     },
 };
 
 export default store;
+
+//write test for orderAndTrackSales
+//look for orderProduct()instances and see if it is always passed a quantity
+//remove order product and place order, update tests
